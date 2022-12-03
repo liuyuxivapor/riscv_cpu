@@ -1,6 +1,9 @@
 `include "defines.vh"
 
-module cpu (
+module cpu #(
+  parameter XLEN = 32,
+  parameter MUL_DIV_ENA = 1,
+) (
   input clock,
   input reset,
   input [XLEN - 1:0] load_data,
@@ -216,42 +219,35 @@ module cpu (
     .zero(alu_zero)
   );
 
-  generate if (MUL_ENA)
-  mul #(
-    .XLEN(XLEN)
-  ) mul_inst(
-    .opcode(ex_alu_op),
-    .rs1(fwd_rs1),
-    .rs2(fwd_rs2),
-    .rd(mul_o)	
-	  .rd(mul_o)	
-    .rd(mul_o)	
-  );
-  endgenerate
-
-  generate if (DIV_ENA)
-  div #(
-    .XLEN(XLEN)
-  ) div_inst(
-    .s_32(ex_s_32),	
-	  .s_32(ex_s_32),	
-    .s_32(ex_s_32),	
-    .opcode(ex_alu_op),
-    .rs1(fwd_rs1),
-    .rs2(fwd_rs2),
-    .rd(div_o)	
-	  .rd(div_o)	
-    .rd(div_o)	
-  );
+  generate if (MUL_DIV_ENA)
+    mul #(
+      .XLEN(XLEN)
+    ) mul_inst(
+      .opcode(ex_alu_op),
+      .rs1(fwd_rs1),
+      .rs2(fwd_rs2),
+      .rd(mul_o)	
+      .rd(mul_o)	
+      .rd(mul_o)	
+    );
+    div #(
+      .XLEN(XLEN)
+    ) div_inst(
+      .s_32(ex_s_32),
+      .opcode(ex_alu_op),
+      .rs1(fwd_rs1),
+      .rs2(fwd_rs2),
+      .rd(div_o)	
+      .rd(div_o)	
+      .rd(div_o)	
+    );
   endgenerate
 
   wire [XLEN - 1:0] ex_alu, alu_mux;
 
   generate 
-    if (DIV_ENA)
+    if (MUL_DIV_ENA)
       assign alu_mux = ex_alu_op[4:2] == 3'b101 ? div_o : ex_alu_op[4:2] == 3'b100 ? mul_o : alu_o;
-    else if (MUL_ENA)
-      assign alu_mux = ex_alu_op[4:2] == 3'b100 ? mul_o : alu_o;
     else assign alu_mux = alu_o;
   endgenerate
 
@@ -340,7 +336,7 @@ module cpu (
     .data_out(store_data)
   );
 
-  wire [XLEN - 1:0] mem_rd_reg = mem_load ? mem_data : mem_alu;
+  wire [XLEN - 1:0] mem_data_reg = mem_load ? mem_data : mem_alu;
 
   mem_wb #(
     .XLEN(XLEN)
@@ -349,14 +345,15 @@ module cpu (
     .pause(mem_wb_pause),
     .bubble(mem_wb_bubble),
     .rd_in(mem_rd),
-    .alu_in(mem_rd_reg),
+    .alu_in(mem_data_reg),
     .rd_out(wb_rd),
     .alu_out(wb_alu)
   );
 
   // stage WB
   gpr #(
-    .XLEN(XLEN)
+    .XLEN(XLEN),
+    .NUM(32)
   ) gpr_inst (
     .clock(clock),
     .addr_w(wb_rd),

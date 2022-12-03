@@ -1,3 +1,5 @@
+`include "define.vh"
+
 module top(
 	input clock,
 	input reset
@@ -24,18 +26,18 @@ module top(
     always @(posedge clock) begin
       if (store && address == ADDR_HALT && store_data[31:0] == 1) begin
         if (dump_file != 0) begin
-          $display("dump: %x - %x", sig_begin, sig_end);
+          // $display("dump: %x - %x", sig_begin, sig_end);
           $writememh(dump_file, mem_inst.mem_inst.words, sig_begin, sig_end);
         end
         $finish;
       end
 
       if (store && address == ADDR_SIG_BEGIN) begin
-        $display("sig_begin: %x", store_data[31:0]);
+        // $display("sig_begin: %x", store_data[31:0]);
         sig_begin <= store_data[31:0] / 2;
       end
       if (store && address == ADDR_SIG_END) begin
-        $display("sig_end: %x", store_data[31:0]);
+        // $display("sig_end: %x", store_data[31:0]);
         sig_end <= (store_data[31:0] / 2) - 1;
       end
     end
@@ -43,10 +45,9 @@ module top(
 
   cpu #(
     .XLEN(XLEN),
-    .ENABLE_MUL(1),
-    .ENABLE_DIV(1),
-    .ENABLE_RVC(1)
-  )cpu_inst (
+    .MUL_DIV_ENA(1),
+    .RVC_ENA(1)
+  ) cpu_inst (
     .clock(clock),
     .reset(reset),
     .load_data(load_data),
@@ -59,12 +60,12 @@ module top(
   );
 
   ram_dp #(
-  `ifdef VERILATOR
-    .DEPTH(1024 * 1024),
-    .BURST(XLEN / 16)
-  `else
-    .WIDTH(XLEN)
-  `endif
+    `ifdef VERILATOR
+      .DEPTH(1024 * 1024),
+      .BURST(XLEN / 16)
+    `else
+      .WIDTH(XLEN)
+    `endif
   ) mem_inst (
     .clock(clock),
     .write_en(store),

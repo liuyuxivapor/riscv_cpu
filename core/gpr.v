@@ -17,7 +17,7 @@ module gpr #(
     .READ_OLD(0)
   ) mem_inst (
     .clock(clock),
-    .write_en(|addr_w),
+    .write_ena(|addr_w),
     .addr_w(addr_w),
     .addr_r1(addr_r1),
     .addr_r2(addr_r2),

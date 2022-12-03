@@ -21,7 +21,7 @@ ifeq ($(VERILATOR_ROOT),)
 VERILATOR = verilator
 VERILATOR_COVERAGE = verilator_coverage
 else
-export VERILATOR_ROOT
+export VERILATOR_ROOT=/home/vapor/verilator
 VERILATOR = $(VERILATOR_ROOT)/bin/verilator
 VERILATOR_COVERAGE = $(VERILATOR_ROOT)/bin/verilator_coverage
 endif
