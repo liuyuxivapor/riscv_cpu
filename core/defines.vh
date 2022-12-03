@@ -92,8 +92,8 @@
 
 // fence
 `define FENCE		3'b000
-`define TSO         4'b1000
-`define FENCE_I     3'b001
+`define TSO     4'b1000
+`define FENCE_I 3'b001
 
 // system
 `define PRIV        3'b000
@@ -157,8 +157,8 @@
 `define ALU_REMU    5'b10111
 
 // common inst
-`define INST_NOP    32'h0000_0013
-`define INST_ECALL  32'h0000_0073
-`define INST_EBREAK 32'h0010_0073
-`define INST_MRET   32'h3020_0073
+`define INST_NOP       32'h0000_0013
+`define INST_ECALL     32'h0000_0073
+`define INST_EBREAK    32'h0010_0073
+`define INST_MRET      32'h3020_0073
 `define INST_FENCE_TSO 32'h8330_000f
