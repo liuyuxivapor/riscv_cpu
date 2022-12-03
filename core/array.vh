@@ -1,4 +1,3 @@
-
 `define PACK(WIDTH, LEN, SRC, DEST) \
     generate begin \
         genvar i; \

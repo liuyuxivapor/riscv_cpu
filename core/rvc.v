@@ -27,7 +27,7 @@ module rvc_inst_type #(
       `C_LI,
       `C_LUI:     itype = `TYPE_CI;
       `C_JAL:     itype = `TYPE_CJ;
-      default:    itype = (inst[11:10] == 2'b11) ? `TYPE_CA : `TYPE_CB;
+      default:    itype = `TYPE_CB;
     endcase
     2: case (inst[15:13])
       `C_SLLI,

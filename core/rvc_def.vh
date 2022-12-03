@@ -32,12 +32,11 @@
 `define C_FSWSP     3'b111
 `define C_SDSP      3'b111
 
-`define TYPE_CR     1
-`define TYPE_CI     2
-`define TYPE_CSS    3
-`define TYPE_CIW    4
-`define TYPE_CL     5
-`define TYPE_CS     6
-`define TYPE_CA     7
-`define TYPE_CB     8
-`define TYPE_CJ     9
+`define TYPE_CR     0
+`define TYPE_CI     1
+`define TYPE_CSS    2
+`define TYPE_CIW    3
+`define TYPE_CL     4
+`define TYPE_CS     5
+`define TYPE_CB     6
+`define TYPE_CJ     7

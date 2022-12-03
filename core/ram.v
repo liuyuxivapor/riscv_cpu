@@ -1,4 +1,3 @@
-
 module ram #(
 	parameter WIDTH = 16,
 	parameter DEPTH = 1024
