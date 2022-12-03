@@ -1,4 +1,3 @@
-
 module top(
 	input clock,
 	input reset
@@ -59,7 +58,6 @@ module top(
     .pc(pc)
   );
 
-
   ram_dp #(
   `ifdef VERILATOR
     .DEPTH(1024 * 1024),
@@ -69,7 +67,7 @@ module top(
   `endif
   ) mem_inst (
     .clock(clock),
-      .write_en(store),
+    .write_en(store),
     .iaddr(pc[XLEN - 1:1]),
     .daddr(address[XLEN - 1:1]),
     .data_i(store_data),

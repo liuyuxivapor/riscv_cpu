@@ -1,4 +1,3 @@
-
 module encoder #(
     parameter WIDTH = 4
 )(

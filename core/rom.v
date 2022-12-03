@@ -1,4 +1,3 @@
-
 module rom #(
 	parameter WIDTH = 16,
 	parameter DEPTH = 1024,
@@ -7,12 +6,12 @@ module rom #(
 	input [$clog2(DEPTH) - 1:0] addr,
 	output [WIDTH - 1:0] data_o
 );
-    generic_rom #(
-        .WIDTH(WIDTH),
-        .DEPTH(DEPTH),
-        .DATAFILE(DATAFILE)
-    ) mem_inst (
-        .addr_r(addr),
-        .data_o(data_o)
-    );
+  generic_rom #(
+    .WIDTH(WIDTH),
+    .DEPTH(DEPTH),
+    .DATAFILE(DATAFILE)
+  ) mem_inst (
+    .addr_r(addr),
+    .data_o(data_o)
+  );
 endmodule

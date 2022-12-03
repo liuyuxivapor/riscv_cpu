@@ -13,7 +13,6 @@
 `define C_NOP       3'b000
 `define C_ADDI      3'b000
 `define C_JAL       3'b001
-`define C_ADDIW     3'b001
 `define C_LI        3'b010
 `define C_ADDI16SP  3'b011
 `define C_LUI       3'b011

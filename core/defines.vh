@@ -1,3 +1,10 @@
+// static
+`define XLEN 32
+`define BYPASS 0
+`define MUL_ENA 1
+`define DIV_ENA 1
+`define RVC_ENA 1
+
 // opcode
 `define LOAD 		7'b0000011
 `define LOAD_FP 	7'b0000111
@@ -13,15 +20,15 @@
 `define LUI			7'b0110111
 `define OP_32		7'b0111011
 
-`define MADD		7'b1000011
+`define MADD	  7'b1000011
 `define MSUB		7'b1000111
 `define NMSUB		7'b1001011
 `define NMADD		7'b1001111
 `define OP_FP		7'b1010011
 
 `define BRANCH		7'b1100011
-`define JALR		7'b1100111
-`define JAL			7'b1101111
+`define JALR	  	7'b1100111
+`define JAL		  	7'b1101111
 `define SYSTEM		7'b1110011
 
 // branch
@@ -36,16 +43,16 @@
 `define LB			3'b000
 `define LH			3'b001
 `define LW			3'b010
-`define LD          3'b011
+`define LD      3'b011
 `define LBU			3'b100
 `define LHU			3'b101
-`define LWU         3'b110
+`define LWU     3'b110
 
 // store
 `define SB			3'b000
 `define SH			3'b001
 `define SW			3'b010
-`define SD          3'b011
+`define SD      3'b011
 
 // op-imm
 `define ADDI		3'b000
