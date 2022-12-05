@@ -44,7 +44,7 @@ module generic_ram_dp #(
 	parameter DEPTH = 32,
   parameter BURST = 1,
   parameter DATAFILE = "",
-  parameter READ_OLD = 0
+  parameter READ_OLD = 1
 )(
 	input clock,
 	input write_ena,

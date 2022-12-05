@@ -385,7 +385,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__cpu_inst__DOT__if_id_inst__DOT__genblk1__DOT__inst_reg 
             = (IData)(((8U & (IData)(vlSelf->top__DOT__cpu_inst__DOT____Vcellout__hazard_inst__bubble))
                         ? 0x13ULL : (((QData)((IData)(vlSelf->top__DOT__pc)) 
-                                      << 0x20U) | (QData)((IData)(vlSelf->top__DOT__inst)))));
+                                      << 0x20U) | (QData)((IData)(vlSelf->top__DOT__mem_inst__DOT__mem_inst__DOT__old_data2)))));
     }
     if ((((IData)(vlSelf->top__DOT__cpu_inst__DOT__ex_mem_inst__DOT__genblk1__DOT__ctrl_reg) 
           >> 5U) & (0x20000004U == vlSelf->top__DOT__cpu_inst__DOT__ex_mem_inst__DOT__genblk1__DOT__alu_reg))) {
@@ -1379,7 +1379,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__cpu_inst__DOT__if_id_inst__DOT__genblk1__DOT__pc_reg 
             = (IData)((((8U & (IData)(vlSelf->top__DOT__cpu_inst__DOT____Vcellout__hazard_inst__bubble))
                          ? 0x13ULL : (((QData)((IData)(vlSelf->top__DOT__pc)) 
-                                       << 0x20U) | (QData)((IData)(vlSelf->top__DOT__inst)))) 
+                                       << 0x20U) | (QData)((IData)(vlSelf->top__DOT__mem_inst__DOT__mem_inst__DOT__old_data2)))) 
                        >> 0x20U));
     }
     vlSelf->top__DOT__cpu_inst__DOT__rd = (((2U == (IData)(vlSelf->top__DOT__cpu_inst__DOT__ins_type)) 
@@ -2371,37 +2371,33 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__4(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__cpu_inst__DOT__mem_data = 
             ((2U & (IData)(vlSelf->top__DOT__cpu_inst__DOT__ex_mem_inst__DOT__genblk1__DOT__ctrl_reg))
               ? ((1U & (IData)(vlSelf->top__DOT__cpu_inst__DOT__ex_mem_inst__DOT__genblk1__DOT__ctrl_reg))
-                  ? 0U : vlSelf->top__DOT__load_data)
+                  ? 0U : vlSelf->top__DOT__mem_inst__DOT__mem_inst__DOT__old_data1)
               : ((1U & (IData)(vlSelf->top__DOT__cpu_inst__DOT__ex_mem_inst__DOT__genblk1__DOT__ctrl_reg))
-                  ? (0xffffU & vlSelf->top__DOT__load_data)
+                  ? (0xffffU & vlSelf->top__DOT__mem_inst__DOT__mem_inst__DOT__old_data1)
                   : (0xffU & ((1U & vlSelf->top__DOT__cpu_inst__DOT__ex_mem_inst__DOT__genblk1__DOT__alu_reg)
-                               ? (vlSelf->top__DOT__load_data 
-                                  >> 8U) : vlSelf->top__DOT__load_data))));
+                               ? (vlSelf->top__DOT__mem_inst__DOT__mem_inst__DOT__old_data1 
+                                  >> 8U) : vlSelf->top__DOT__mem_inst__DOT__mem_inst__DOT__old_data1))));
         vlSelf->top__DOT__store_data = 0U;
     } else {
         vlSelf->top__DOT__cpu_inst__DOT__mem_data = 
             ((2U & (IData)(vlSelf->top__DOT__cpu_inst__DOT__ex_mem_inst__DOT__genblk1__DOT__ctrl_reg))
-              ? vlSelf->top__DOT__load_data : ((1U 
-                                                & (IData)(vlSelf->top__DOT__cpu_inst__DOT__ex_mem_inst__DOT__genblk1__DOT__ctrl_reg))
-                                                ? VL_EXTENDS_II(32,16, 
-                                                                (0xffffU 
-                                                                 & vlSelf->top__DOT__load_data))
-                                                : VL_EXTENDS_II(32,8, 
-                                                                (0xffU 
-                                                                 & ((1U 
-                                                                     & vlSelf->top__DOT__cpu_inst__DOT__ex_mem_inst__DOT__genblk1__DOT__alu_reg)
-                                                                     ? 
-                                                                    (vlSelf->top__DOT__load_data 
-                                                                     >> 8U)
-                                                                     : vlSelf->top__DOT__load_data)))));
+              ? vlSelf->top__DOT__mem_inst__DOT__mem_inst__DOT__old_data1
+              : ((1U & (IData)(vlSelf->top__DOT__cpu_inst__DOT__ex_mem_inst__DOT__genblk1__DOT__ctrl_reg))
+                  ? VL_EXTENDS_II(32,16, (0xffffU & vlSelf->top__DOT__mem_inst__DOT__mem_inst__DOT__old_data1))
+                  : VL_EXTENDS_II(32,8, (0xffU & ((1U 
+                                                   & vlSelf->top__DOT__cpu_inst__DOT__ex_mem_inst__DOT__genblk1__DOT__alu_reg)
+                                                   ? 
+                                                  (vlSelf->top__DOT__mem_inst__DOT__mem_inst__DOT__old_data1 
+                                                   >> 8U)
+                                                   : vlSelf->top__DOT__mem_inst__DOT__mem_inst__DOT__old_data1)))));
         vlSelf->top__DOT__store_data = ((2U & (IData)(vlSelf->top__DOT__cpu_inst__DOT__ex_mem_inst__DOT__genblk1__DOT__ctrl_reg))
                                          ? vlSelf->top__DOT__cpu_inst__DOT__ex_mem_inst__DOT__genblk1__DOT__rs2_reg
                                          : ((1U & (IData)(vlSelf->top__DOT__cpu_inst__DOT__ex_mem_inst__DOT__genblk1__DOT__ctrl_reg))
                                              ? ((0xffff0000U 
-                                                 & vlSelf->top__DOT__load_data) 
+                                                 & vlSelf->top__DOT__mem_inst__DOT__mem_inst__DOT__old_data1) 
                                                 | (0xffffU 
                                                    & vlSelf->top__DOT__cpu_inst__DOT__ex_mem_inst__DOT__genblk1__DOT__rs2_reg))
-                                             : ((vlSelf->top__DOT__load_data 
+                                             : ((vlSelf->top__DOT__mem_inst__DOT__mem_inst__DOT__old_data1 
                                                  & (~ 
                                                     ((1U 
                                                       & vlSelf->top__DOT__cpu_inst__DOT__ex_mem_inst__DOT__genblk1__DOT__alu_reg)
@@ -2493,18 +2489,6 @@ VL_INLINE_OPT void Vtop___024root___multiclk__TOP__5(Vtop___024root* vlSelf) {
                                                 ? vlSelf->top__DOT__cpu_inst__DOT__mem_wb_inst__DOT__genblk1__DOT__alu_reg
                                                 : vlSelf->top__DOT__cpu_inst__DOT__gpr_inst__DOT__mem_inst__DOT__words
                                                [vlSelf->top__DOT__cpu_inst__DOT__rs2]);
-    vlSelf->top__DOT__load_data = ((0x20U & (IData)(vlSelf->top__DOT__cpu_inst__DOT__ex_mem_inst__DOT__genblk1__DOT__ctrl_reg))
-                                    ? vlSelf->top__DOT__store_data
-                                    : vlSelf->top__DOT__mem_inst__DOT__mem_inst__DOT__old_data1);
-    vlSelf->top__DOT__inst = ((((IData)(vlSelf->top__DOT__cpu_inst__DOT__ex_mem_inst__DOT__genblk1__DOT__ctrl_reg) 
-                                >> 5U) & ((0xfffffU 
-                                           & (vlSelf->top__DOT__cpu_inst__DOT__ex_mem_inst__DOT__genblk1__DOT__alu_reg 
-                                              >> 1U)) 
-                                          == (0xfffffU 
-                                              & (vlSelf->top__DOT__pc 
-                                                 >> 1U))))
-                               ? vlSelf->top__DOT__store_data
-                               : vlSelf->top__DOT__mem_inst__DOT__mem_inst__DOT__old_data2);
     vlSelf->top__DOT__cpu_inst__DOT____Vcellinp__pc_inst__npc 
         = ((1U & ((IData)(vlSelf->top__DOT__cpu_inst__DOT__s_exception) 
                   | (vlSelf->top__DOT__cpu_inst__DOT__id_ex_inst__DOT__genblk1__DOT__ctrl_reg 
@@ -2542,7 +2526,7 @@ VL_INLINE_OPT void Vtop___024root___multiclk__TOP__5(Vtop___024root* vlSelf) {
                                                   ((3U 
                                                     != 
                                                     (3U 
-                                                     & vlSelf->top__DOT__inst))
+                                                     & vlSelf->top__DOT__mem_inst__DOT__mem_inst__DOT__old_data2))
                                                     ? 2U
                                                     : 4U)))));
 }

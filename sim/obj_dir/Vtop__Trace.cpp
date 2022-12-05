@@ -554,18 +554,16 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
             tracep->chgIData(oldp+190,(vlSelf->top__DOT__mem_inst__DOT__mem_inst__DOT__genblk2__DOT__i),32);
         }
         if (VL_UNLIKELY(vlSelf->__Vm_traceActivity[3U])) {
-            tracep->chgIData(oldp+191,(vlSelf->top__DOT__load_data),32);
-            tracep->chgIData(oldp+192,(vlSelf->top__DOT__inst),32);
+            tracep->chgIData(oldp+191,(vlSelf->top__DOT__mem_inst__DOT__mem_inst__DOT__old_data1),32);
+            tracep->chgIData(oldp+192,(vlSelf->top__DOT__mem_inst__DOT__mem_inst__DOT__old_data2),32);
             tracep->chgIData(oldp+193,(vlSelf->top__DOT__cpu_inst__DOT__id_rs1),32);
             tracep->chgIData(oldp+194,(vlSelf->top__DOT__cpu_inst__DOT__id_rs2),32);
             tracep->chgIData(oldp+195,(vlSelf->top__DOT__cpu_inst__DOT__mem_data_reg),32);
-            tracep->chgBit(oldp+196,((3U != (3U & vlSelf->top__DOT__inst))));
-            tracep->chgIData(oldp+197,(vlSelf->top__DOT__mem_inst__DOT__mem_inst__DOT__old_data1),32);
-            tracep->chgIData(oldp+198,(vlSelf->top__DOT__mem_inst__DOT__mem_inst__DOT__old_data2),32);
+            tracep->chgBit(oldp+196,((3U != (3U & vlSelf->top__DOT__mem_inst__DOT__mem_inst__DOT__old_data2))));
         }
-        tracep->chgBit(oldp+199,(vlSelf->clock));
-        tracep->chgBit(oldp+200,(vlSelf->reset));
-        tracep->chgIData(oldp+201,(((0x800U & vlSelf->top__DOT__cpu_inst__DOT__id_ex_inst__DOT__genblk1__DOT__ctrl_reg)
+        tracep->chgBit(oldp+197,(vlSelf->clock));
+        tracep->chgBit(oldp+198,(vlSelf->reset));
+        tracep->chgIData(oldp+199,(((0x800U & vlSelf->top__DOT__cpu_inst__DOT__id_ex_inst__DOT__genblk1__DOT__ctrl_reg)
                                      ? (vlSelf->top__DOT__cpu_inst__DOT__alu_o 
                                         & (~ (1U & 
                                               (vlSelf->top__DOT__cpu_inst__DOT__id_ex_inst__DOT__genblk1__DOT__ctrl_reg 
@@ -578,10 +576,10 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
                                             : ((3U 
                                                 != 
                                                 (3U 
-                                                 & vlSelf->top__DOT__inst))
+                                                 & vlSelf->top__DOT__mem_inst__DOT__mem_inst__DOT__old_data2))
                                                 ? 2U
                                                 : 4U))))),32);
-        tracep->chgIData(oldp+202,(((1U & ((IData)(vlSelf->top__DOT__cpu_inst__DOT__s_exception) 
+        tracep->chgIData(oldp+200,(((1U & ((IData)(vlSelf->top__DOT__cpu_inst__DOT__s_exception) 
                                            | (vlSelf->top__DOT__cpu_inst__DOT__id_ex_inst__DOT__genblk1__DOT__ctrl_reg 
                                               >> 5U)))
                                      ? (IData)((0x1ffffffffULL 
@@ -621,12 +619,12 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
                                                    (3U 
                                                     != 
                                                     (3U 
-                                                     & vlSelf->top__DOT__inst))
+                                                     & vlSelf->top__DOT__mem_inst__DOT__mem_inst__DOT__old_data2))
                                                     ? 2U
                                                     : 4U)))))),32);
-        tracep->chgIData(oldp+203,(vlSelf->top__DOT__cpu_inst__DOT__gpr_inst__DOT__mem_inst__DOT__words
+        tracep->chgIData(oldp+201,(vlSelf->top__DOT__cpu_inst__DOT__gpr_inst__DOT__mem_inst__DOT__words
                                    [vlSelf->top__DOT__cpu_inst__DOT__rs1]),32);
-        tracep->chgIData(oldp+204,(vlSelf->top__DOT__cpu_inst__DOT__gpr_inst__DOT__mem_inst__DOT__words
+        tracep->chgIData(oldp+202,(vlSelf->top__DOT__cpu_inst__DOT__gpr_inst__DOT__mem_inst__DOT__words
                                    [vlSelf->top__DOT__cpu_inst__DOT__rs2]),32);
     }
 }

@@ -51,9 +51,7 @@ VL_MODULE(Vtop___024root) {
         CData/*4:0*/ top__DOT__cpu_inst__DOT__genblk1__DOT__rvc_inst__DOT__rs2;
         CData/*4:0*/ top__DOT__cpu_inst__DOT__genblk1__DOT__rvc_inst__DOT__rd;
         CData/*3:0*/ top__DOT__cpu_inst__DOT__genblk1__DOT__rvc_inst__DOT__rvc_decode_inst__DOT__itype;
-        IData/*31:0*/ top__DOT__load_data;
         IData/*31:0*/ top__DOT__store_data;
-        IData/*31:0*/ top__DOT__inst;
         IData/*31:0*/ top__DOT__pc;
         IData/*31:0*/ top__DOT__sig_begin;
         IData/*31:0*/ top__DOT__sig_end;
@@ -89,10 +87,10 @@ VL_MODULE(Vtop___024root) {
         IData/*31:0*/ top__DOT__cpu_inst__DOT__csr_inst__DOT__mcause_next;
         IData/*31:0*/ top__DOT__cpu_inst__DOT__csr_inst__DOT__mtval_next;
         IData/*31:0*/ top__DOT__cpu_inst__DOT__csr_inst__DOT__mstatus_next;
-    };
-    struct {
         IData/*31:0*/ top__DOT__cpu_inst__DOT__csr_inst__DOT__data_w;
         IData/*31:0*/ top__DOT__cpu_inst__DOT__csr_inst__DOT__csr_reg_inst__DOT__mie;
+    };
+    struct {
         IData/*31:0*/ top__DOT__cpu_inst__DOT__csr_inst__DOT__csr_reg_inst__DOT__mip;
         IData/*31:0*/ top__DOT__cpu_inst__DOT__csr_inst__DOT__csr_reg_inst__DOT__mscratch;
         IData/*31:0*/ top__DOT__cpu_inst__DOT__ex_mem_inst__DOT__genblk1__DOT__rs2_reg;
