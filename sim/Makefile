@@ -8,7 +8,7 @@
 # Check for sanity to avoid later confusion
 
 ifneq ($(words $(CURDIR)),1)
- $(error Unsupported: GNU Make cannot build in directories containing spaces, build elsewhere: '$(CURDIR)')
+	$(error Unsupported: GNU Make cannot build in directories containing spaces, build elsewhere: '$(CURDIR)')
 endif
 
 ######################################################################
@@ -18,16 +18,16 @@ endif
 # package install, and verilator is in your path. Otherwise find the
 # binary relative to $VERILATOR_ROOT (such as when inside the git sources).
 ifeq ($(VERILATOR_ROOT),)
-VERILATOR = verilator
-VERILATOR_COVERAGE = verilator_coverage
+	VERILATOR = verilator
+	VERILATOR_COVERAGE = verilator_coverage
 else
-export VERILATOR_ROOT=/home/vapor/verilator
-VERILATOR = $(VERILATOR_ROOT)/bin/verilator
-VERILATOR_COVERAGE = $(VERILATOR_ROOT)/bin/verilator_coverage
+	export VERILATOR_ROOT=/home/vapor/verilator
+	VERILATOR = $(VERILATOR_ROOT)/bin/verilator
+	VERILATOR_COVERAGE = $(VERILATOR_ROOT)/bin/verilator_coverage
 endif
 
 ifneq ($(XLEN),)
-VERILATOR_FLAGS += -DXLEN=$(XLEN)
+	VERILATOR_FLAGS += -DXLEN=$(XLEN)
 endif
 
 VERILATOR_TOP = top
@@ -54,7 +54,7 @@ VERILATOR_FLAGS += --trace
 VERILATOR_FLAGS += --top-module $(VERILATOR_TOP)
 
 # Input files for Verilator
-VERILATOR_INPUT = -I../rtl ../rtl/*.v sim_main.cpp
+VERILATOR_INPUT = -I../core ../core/*.v sim_main.cpp
 
 ######################################################################
 default: build

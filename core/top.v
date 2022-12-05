@@ -1,9 +1,13 @@
-`include "define.vh"
-
 module top(
 	input clock,
 	input reset
 );
+
+  `ifdef XLEN
+    localparam XLEN = `XLEN;
+  `else
+    localparam XLEN = 32;
+  `endif
 
   wire load, store;
   wire [XLEN - 1:0] load_data, store_data, inst, address, pc;

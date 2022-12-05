@@ -41,7 +41,7 @@ module ram_dp #(
     .DATAFILE(DATAFILE),
   ) mem_inst (
     .clock(clock),
-    .write_en(write_en),
+    .write_ena(write_en),
     .addr_w(daddr),
     .addr_r1(daddr),
     .addr_r2(iaddr),

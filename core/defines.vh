@@ -1,9 +1,6 @@
 // static
 `define XLEN 32
 `define BYPASS 0
-// `define MUL_ENA 1
-// `define DIV_ENA 1
-// `define RVC_ENA 1
 
 // opcode
 `define LOAD 		  7'b0000011

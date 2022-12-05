@@ -33,7 +33,7 @@ module st_gen #(
   output reg [XLEN - 1:0] data_out
 );
 
-  always @(negedge clk) case (funct3)
+  always @(negedge clock) case (funct3)
     `SB:  data_out = (data_l & ~(s_byte ? 16'hff00 : 8'hff)) | $unsigned(s_byte ? {data_in[7:0], 8'b0} : data_in[7:0]);
     `SH:  data_out = (data_l & ~16'hffff) | $unsigned(data_in[15:0]);
     `SW:  data_out = (data_l & ~32'hffff_ffff) | $unsigned(data_in[31:0]);

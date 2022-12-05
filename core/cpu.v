@@ -3,6 +3,7 @@
 module cpu #(
   parameter XLEN = 32,
   parameter MUL_DIV_ENA = 1,
+  parameter RVC_ENA = 1
 ) (
   input clock,
   input reset,
@@ -180,8 +181,6 @@ module cpu #(
     .pc_out(ex_pc),
     .rs1_out(ex_rs1),
     .rs2_out(ex_rs2),	
-	  .rs2_out(ex_rs2),	
-    .rs2_out(ex_rs2),	
     .imm_out(ex_imm),
     .ctrl_out({ex_alu_op, ex_s_pc, ex_s_imm, ex_s_32, ex_jalr, ex_branch, ex_branch_zero, ex_csr, ex_csri, ex_csrw, ex_jump, ex_store, ex_load, ex_flush, ex_ecall, ex_ebreak, ex_mret, ex_illegal, ex_funct3, ex_s_rvc})
   );
@@ -226,9 +225,7 @@ module cpu #(
       .opcode(ex_alu_op),
       .rs1(fwd_rs1),
       .rs2(fwd_rs2),
-      .rd(mul_o)	
-      .rd(mul_o)	
-      .rd(mul_o)	
+      .rd(mul_o)
     );
     div #(
       .XLEN(XLEN)
@@ -237,9 +234,7 @@ module cpu #(
       .opcode(ex_alu_op),
       .rs1(fwd_rs1),
       .rs2(fwd_rs2),
-      .rd(div_o)	
-      .rd(div_o)	
-      .rd(div_o)	
+      .rd(div_o)
     );
   endgenerate
 
@@ -291,7 +286,7 @@ module cpu #(
     .data_in(ex_csri ? ex_rs1_fwd : fwd_rs1),
     .s_exception(s_exception),
     .pc_out(csr_pc),
-    .data_out(csr_o),
+    .data_out(csr_o)
   );
 
   ex_mem #(

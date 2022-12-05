@@ -194,10 +194,10 @@ module rvc #(
       0: case (inst_in[15:13])
         `C_LW:      inst_out = {imm[11:0], rs1, `LW, rd, `LOAD};
         `C_LD:      inst_out = {imm[11:0], rs1, `LD, rd, `LOAD};
-        `C_LQ:      inst_out = {imm[11:0], rs1, `LQ, rd, `LOAD};
+        // `C_LQ:      inst_out = {imm[11:0], rs1, `LQ, rd, `LOAD};
         `C_SW:      inst_out = {imm[11:5], rs2, rs1, `SW, imm[4:0], `STORE};
         `C_SD:      inst_out = {imm[11:5], rs2, rs1, `SD, imm[4:0], `STORE};
-        `C_SQ:      inst_out = {imm[11:5], rs2, rs1, `SQ, imm[4:0], `STORE};
+        // `C_SQ:      inst_out = {imm[11:5], rs2, rs1, `SQ, imm[4:0], `STORE};
         `C_ADDI4SPN:inst_out = {imm[11:0], x2, `ADDI, rd, `OP_IMM};
         default:    inst_out = 0;
       endcase
@@ -208,7 +208,7 @@ module rvc #(
           `C_ADDI:    inst_out = {imm[11:0], rd, `ADDI, rd, `OP_IMM};
           `C_LI:      inst_out = {imm[11:0], x0, `ADDI, rd, `OP_IMM};
           `C_LUI:     inst_out = (rs1 == 5'h2) ? {imm[11:0], x2, `ADDI, x2, `OP_IMM} : {imm[31:12], rd, `LUI};
-          `C_JAL:     inst_out = {imm[20], imm[10:1], imm[11], imm[19:12], x1, `JAL} : {imm[11:0], rd, `ADDIW, rd, `OP_IMM_32};
+          `C_JAL:     inst_out = {imm[20], imm[10:1], imm[11], imm[19:12], x1, `JAL};
           default: case (inst_in[11:10])
                 2'b00:  inst_out = {7'b0000000, imm[4:0], rd, `SRLI, rd, `OP_IMM};
                 2'b01:  inst_out = {7'b0100000, imm[4:0], rd, `SRAI, rd, `OP_IMM};
@@ -228,10 +228,10 @@ module rvc #(
           `C_SLLI:    inst_out = {7'b0000000, imm[4:0], rd, `SLLI, rd, `OP_IMM};
           `C_LWSP:    inst_out = {imm[11:0], x2, `LW, rd, `LOAD};
           `C_LDSP:    inst_out = {imm[11:0], x2, `LD, rd, `LOAD};
-          `C_LQSP:    inst_out = {imm[11:0], x2, `LQ, rd, `LOAD};
+          // `C_LQSP:    inst_out = {imm[11:0], x2, `LQ, rd, `LOAD};
           `C_SWSP:    inst_out = {imm[11:5], rs2, x2, `SW, imm[4:0], `STORE};
           `C_SDSP:    inst_out = {imm[11:5], rs2, x2, `SD, imm[4:0], `STORE};
-          `C_SQSP:    inst_out = {imm[11:5], rs2, x2, `SQ, imm[4:0], `STORE};
+          // `C_SQSP:    inst_out = {imm[11:5], rs2, x2, `SQ, imm[4:0], `STORE};
           default: case ({inst_in[12], rs1 != 0, rs2 != 0})
                 3'b010: inst_out = {12'b0, rs1, 3'b0, x0, `JALR};
                 3'b011: inst_out = {7'b0000000, rs2, x0, `ADD, rd, `OP};

@@ -11,7 +11,7 @@ module if_id #(
   output [XLEN - 1:0] pc_out,
   output [31:0] inst_out
 );
-  generate if (BYPASS) begin
+  generate if (`BYPASS) begin
     assign {pc_out, inst_out} = {pc_in, inst_in};
   end else begin
     reg [XLEN - 1:0] pc_reg = 0;
@@ -38,7 +38,7 @@ module id_ex #(
   output [XLEN - 1:0] pc_out, rs1_out, rs2_out, imm_out,
   output [25:0] ctrl_out
 );
-  generate if (BYPASS) begin
+  generate if (`BYPASS) begin
     assign {rd_out, rs1_fwd_out, rs2_fwd_out, pc_out, rs1_out, rs2_out, imm_out, ctrl_out} = {rd_in, rs1_fwd_in, rs2_fwd_in, pc_in, rs1_in, rs2_in, imm_in, ctrl_in};
   end else begin
     reg [4:0] rd_reg = 0, rs1_fwd_reg = 0, rs2_fwd_reg = 0;
@@ -66,7 +66,7 @@ module ex_mem #(
   output [XLEN - 1:0] rs2_out, alu_out,
   output [5:0] ctrl_out
 );
-  generate if (BYPASS) begin
+  generate if (`BYPASS) begin
     assign {rd_out, rs2_out, alu_out, ctrl_out} = {rd_in, rs2_in, alu_in, ctrl_in};
   end else begin
     reg [5:0] ctrl_reg = 0;
@@ -92,7 +92,7 @@ module mem_wb #(
   output [4:0] rd_out,
   output [XLEN - 1:0] alu_out
 );
-  generate if (BYPASS) begin
+  generate if (`BYPASS) begin
     assign {rd_out, alu_out} = {rd_in, alu_in};
   end else begin
     reg [4:0] rd_reg = 0;
