@@ -19,7 +19,7 @@ module generic_ram #(
           $readmemh(DATAFILE, words);
       end
     else
-      initial begin
+      initial begin : init
           integer i;
           for (i = 0; i < DEPTH; i = i + 1)
               words[i] = 0;
@@ -63,7 +63,7 @@ module generic_ram_dp #(
         $readmemh(DATAFILE, words);
       end
     else
-      initial begin
+      initial begin : init
         integer i;
         for (i = 0; i < DEPTH; i = i + 1)
             words[i] = 0;
@@ -124,12 +124,11 @@ module generic_rom #(
       initial begin
         $readmemh(DATAFILE, words);
       end
-    else begin
-      initial begin
+    else
+      initial begin : init
         integer i;
         for (i = 0; i < DEPTH; i = i + 1)
           words[i] = 0;
-      end
     end
   endgenerate
 
