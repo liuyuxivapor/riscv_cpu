@@ -40,7 +40,7 @@ This is my first simple five-stage pipeline processor based on the RISC-V archit
 
 This section is based on EGo1 FPGA powered by Xilinx Artix-7(now part of AMD).
 
-Since Verilator is a cycle-based simulator, it does not evaluate time within a single cycle or simulate precise circuit timing. Instead, circuit status is typically evaluated once per clock cycle, so no intra-clock cycle glitches are observed, and timing signal delays are not supported. Therefore, we used Vivado for timing simulations on FPGA.
+Since Verilator is a cycle-based simulator, it does not evaluate time within a single cycle or simulate precise circuit timing. Instead, circuit status is typically evaluated once per clock cycle, so no intra-clock cycle glitches are observed, and timing signal delays are not supported. Therefore, we use Vivado for timing simulations on FPGA.
 
 Set CYCLE = 10, leading to clk frequency = 100MHz.
 
