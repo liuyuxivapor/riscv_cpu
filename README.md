@@ -12,7 +12,7 @@ This is my first simple five-stage pipeline processor based on the RISC-V archit
 
 # 测试 Tests
 
-## [架构测试](https://github.com/liuyuxivapor/riscv_cpu) Arch-test
+## 架构测试 Arch test
 1. Simulation build first.    
    Make sure you have installed VERILATOR and RISCV-GNU-TOOLCHAIN and set them in your path.
    ```
@@ -36,15 +36,15 @@ This is my first simple five-stage pipeline processor based on the RISC-V archit
    OK: 16/16 RISCV_TARGET=test RISCV_DEVICE=privilege XLEN=32
    ```
 
-## [FPGA测试](https://github.com/liuyuxivapor/riscv_cpu/tree/fpga) FPGA test
+## FPGA测试 FPGA test
 
 This section is based on EGo1 FPGA powered by Xilinx Artix-7(now part of AMD).
 
 Since Verilator is a cycle-based simulator, it does not evaluate time within a single cycle or simulate precise circuit timing. Instead, circuit status is typically evaluated once per clock cycle, so no intra-clock cycle glitches are observed, and timing signal delays are not supported. Therefore, we use Vivado for timing simulations on FPGA.
 
-Set CYCLE = 10, leading to clk frequency = 100MHz.
+Set CYCLE = 20, leading clk frequency to 50MHz.
 
-## [模拟器测试](https://github.com/liuyuxivapor/riscv_cpu/tree/qemu) QEMU test
+<!-- ## 模拟器测试 QEMU test -->
 
 # 遇到的问题与对策 Problems and Solutions
 
@@ -69,7 +69,7 @@ Set CYCLE = 10, leading to clk frequency = 100MHz.
 
 核心设计上的Verilog/SV是硬件描述语言，模拟与测试上的C++/System C是程序设计语言，二者在构造与执行顺序上还是有很大不同的，使用时应格外注意思维的转换，譬如RTL的并行机制就debug数次并可能跨越数个文件才能找到问题。
 
-# 致谢 Acknowledgements
+<!-- # 致谢 Acknowledgements
 - HIT-MEC
 - Creative Commons Public Domain
 - Sources on GitHub
@@ -77,4 +77,4 @@ Set CYCLE = 10, leading to clk frequency = 100MHz.
   - [riscv-arch-test](https://github.com/riscv-non-isa/riscv-arch-test)
   - [riscv-tests](https://github.com/riscv-software-src/riscv-tests)
   - [verilator](https://github.com/verilator/verilator)
-- [“一生一芯”项目](https://ysyx.oscc.cc)
+- [“一生一芯”项目](https://ysyx.oscc.cc) -->
