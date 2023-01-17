@@ -9,19 +9,6 @@ p.s.由于前期工作大多在本地完成，所以仓库内不含前期代码�
 
 This is my first simple five-stage pipeline processor based on the RISC-V architecture, capable of excecuting most of the common instructions in the RV32CIM isa and interrupt processing through the csr registers (see more in `./core/*.vh` for instructions). Since most of the preliminary work is done locally, the whole process of building the pre-code is not included in the repository.
 
-# 设计与综合 Design and Synthesis
-
-<!-- ## 设计思路 Design routes -->
-
-Chisel --Decoder
-
-每一层抽象都有它存在的理由:
-
-概念相同的一个硬件模块有着不同的实现方式, 比如处理器既可以通过NEMU中简单的解释方式来实现, 也可以通过类似QEMU中高性能的二进制翻译方式来实现, 甚至可以通过verilog等硬件描述语言来实现一个真实的处理器.
-ISA是硬件向软件提供的可以操作硬件的接口
-AM的API对不同ISA(如x86/mips32/riscv32)的接口进行了抽象, 为上层的程序屏蔽ISA相关的细节
-运行时环境可以通过对AM的API进行进一步的封装, 向程序提供更方便的功能
-
 # 模拟与测试 Simulation and Tests
 
 ## FPGA测试 FPGA test
@@ -65,7 +52,7 @@ Set **CYCLE = 20**, leading clk frequency to **50MHz**.
     cd sim
     make
     ```
-2. Config the simulation file to [NEMU](https://github.com/sunoi/ICS2022-PA) (including at least nemu, abstract-machine and am-kernels). Change srcs at proper positions and finish at least ioe_timer for the **benchmark** to work. [Here]() for more details.
+2. Config the simulation file to [NEMU](https://github.com/sunoi/ICS2022-PA) (including at least nemu, abstract-machine and am-kernels). Change srcs at proper positions and finish at least ioe_timer for the **benchmark** to work. [Here](https://github.com/liuyuxivapor/ics2022) for more details.
 
     ```
     cd ics2022/am-kernels/benchmarks/$TEST
@@ -105,26 +92,31 @@ p.s. After finishing all ioe supported, you can also run games in `ics2022/fceux
 
 # 遇到的问题与对策 Problems and Solutions
 
+## 设备级工程的设计 Design of device-level engineering
+
+在此之前利用Verilog/SV设计过一些简单功能的电路，但基本没有接触过设备级工程的建立与模拟测试。在参照参考书的同时，从基础模块的建立，到模块的层层套叠、复用，到层间的接口，都进行了不断的设计与优化，最终能够满足软件的指令完成并达到近优速率。
+
 ## 计算机结构相关知识 Computer organization, system, architecture
 
 这应该是伴随我整个项目进程中最严重的问题了。由于在专业课程上缺少项目所需的计算机构造以及系统层级的部分，我需要花很多时间补充这上面的基础知识。
-
-不熟悉的linux系统、总也记不住的操作、眼花缭乱的编译与调试过程都曾让我陷入深深的自我怀疑，但我抓紧课余时间不断求问学长与老师，看书查资料补足基础知识，终于大致理解掌握了这些体系的知识与脉络。
 
 - Computer Organization and Design, by David A. Patterson / John L. Hennessy
 - Computer Systems: A Programmer's Perspective, by Randal E. Bryant / David R. O'Hallaron
 - Computer Architecture: A Quantitative Approach, by John L.Hennessy / David A. Patterson
 
-### 通过项目前后的学习，我至少掌握了
+总也记不住的操作和眼花缭乱的编译与调试过程都曾让我陷入深深的自我怀疑，但我努力静心求问，看书查资料(~~STFW && RTFSC~~)补足基础知识，终于大致理解掌握了这些体系的知识与脉络：
 
-**linux系统基本原理，gnutools的使用，Makefile编写，使用git管理代码，c++/system c基础，计算机组成原理，qemu配置与使用，编译工具使用**
+1. 概念相同的一个硬件模块有着不同的实现方式, 比如处理器既可以通过NEMU中简单的解释方式来实现, 可以通过类似QEMU中高性能的二进制翻译方式来实现, 也可以通过verilog等硬件描述语言来实现一个真实的处理器.
+2. ISA是硬件向软件提供的可以操作硬件的接口
+3. AM的API对不同ISA(如x86/mips32/riscv32)的接口进行了抽象, 为上层的程序屏蔽ISA相关的细节
+4. 运行时环境可以通过对AM的API进行进一步的封装, 向程序提供更方便的功能
 
-## 设备级工程的设计 Design of device-level engineering
+### 通过项目前后的学习，我认为至少掌握了
 
-在此之前利用Verilog/SV设计过一些简单功能的电路，但基本没有接触过设备级工程的建立与模拟测试。在参照参考书的同时，从基础模块的建立，到模块的层层套叠、复用，到层间的接口，都进行了不断的设计与优化，最终能够满足软件的指令完成并达到近优速率。
+c++/system c基础，gnutools的使用，使用git管理代码，linux系统基本原理，计算机组成原理，操作系统基础，qemu基本使用，etc.
 
-
-## qqqqq
+### 小遗憾
+怎么没早点知道chaisel这种好东西……看起来真的很好用~
 
 # 致谢 Acknowledgements
 - HIT-MEC
