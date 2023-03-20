@@ -120,11 +120,9 @@ c++/system c基础，gnutools的使用，使用git管理代码，linux系统基�
 
 # 致谢 Acknowledgements
 - HIT-MEC
-- Creative Commons Public Domain
-- Sources from GitHub
+- Sources
   - riscv-gnu-toolchain
   - riscv-arch-test
-  - riscv-tests
   - verilator
   - linux_talk
 - [“一生一芯”项目](https://ysyx.oscc.cc)
